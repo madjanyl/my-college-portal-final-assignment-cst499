@@ -1,0 +1,8 @@
+/course_enrollment/
+│
+├── index.php           ← Landing Page
+├── login.php           ← Login Page
+├── register.php        ← Registration Page
+├── db.php              ← DB Connection
+└── styles.css          ← Optional styling
+

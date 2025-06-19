@@ -1,0 +1,17 @@
+require 'php.php';
+$pdo = (new Database())->connect();
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    if ($stmt->execute([$name, $email, $password])) {
+        $message = "Registration successful!";
+    } else {
+        $message = "Registration failed!";
+    }
+}
